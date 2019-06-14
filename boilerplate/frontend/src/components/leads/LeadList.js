@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LeadItem from "./LeadItem";
 import { Pagination } from "antd";
+import { Card, Col, Row } from "antd";
 
 export class LeadList extends Component {
   constructor(props) {
@@ -15,34 +16,18 @@ export class LeadList extends Component {
 
     return (
       <div>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Тип документа</th>
-              <th>Этап</th>
-              <th>Предмет</th>
-              <th>Получатель</th>
-              <th>Источник</th>
-              <th>Файл</th>
-              <th>Дата</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.leads.map(lead => {
-              if (lead.match == false) {
-                return;
-              }
-              return (
-                <LeadItem
-                  key={lead.id}
-                  lead={lead}
-                />
-              );
-            })}
-          </tbody>
-        </table>
+        <Row gutter={16}>
+          {this.props.leads.map(lead => {
+            if (lead.match == false) {
+              return;
+            }
+            return (
+              <Col span={8}>
+                <LeadItem key={lead.id} lead={lead} />
+              </Col>
+            );
+          })}
+        </Row>
         <Pagination
           defaultCurrent={1}
           total={50}
