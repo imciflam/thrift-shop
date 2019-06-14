@@ -53,7 +53,7 @@ export class Leads extends Component {
     // });
     return (
       <Fragment>
-        <h2>Мои записки</h2>
+        <h2>Доступные объявления</h2>
         <Searcher
           text={this.state.searchTerm}
           search={this.search.bind(this)}

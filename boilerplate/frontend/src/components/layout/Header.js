@@ -27,10 +27,19 @@ export class Header extends Component {
             {user ? `${user.username.slice(0, 1)}` : ""}
           </Avatar>
         </span>
-        <li className="nav-item">
+        <li className="nav-item ml-auto">
           <button
             onClick={this.props.logout}
-            className="nav-link btn btn-info bg-primary text-light rounded mt-1"
+            className="nav-link btn btn-info bg-primary text-light rounded mt-1 mr-1"
+            type="button"
+          >
+            Подать объявление
+          </button>
+        </li>
+        <li className="nav-item ml-auto">
+          <button
+            onClick={this.props.logout}
+            className="nav-link btn btn-secondary  text-light rounded mt-1"
             type="button"
           >
             Выйти
@@ -70,7 +79,7 @@ export class Header extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a className="navbar-brand font-weight-bold" href="#">
-              ТатарстанОС
+              ThanosCar
             </a>
           </div>
           {isAuthenticated ? authLinks : guestLinks}
