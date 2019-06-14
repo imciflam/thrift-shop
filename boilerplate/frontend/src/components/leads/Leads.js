@@ -35,22 +35,6 @@ export class Leads extends Component {
   }
 
   render() {
-    // const leads = this.props.leads.map(lead => {
-    //   return (
-    //     <LeadItem
-    //       key={lead.id}
-    //       id={lead.id}
-    //       documentCode={lead.documentCode}
-    //       documentStageCode={lead.documentStageCode}
-    //       name={lead.name}
-    //       email={lead.email}
-    //       message={lead.message}
-    //       fileDocument={lead.fileDocument}
-    //       created_at={lead.created_at.slice(0, -17)}
-    //       update={this.updateData.bind(this)}
-    //     />
-    //   );
-    // });
     return (
       <Fragment>
         <h2>Доступные объявления</h2>

@@ -30,7 +30,7 @@ export class LeadItem extends Component {
           />
         }
       >
-        <Meta title={lead.documentCode} description={lead.documentStageCode} />
+        <Meta title={lead.brand} description={lead.price} />
       </Card>
     );
   }
