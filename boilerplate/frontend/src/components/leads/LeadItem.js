@@ -31,6 +31,13 @@ export class LeadItem extends Component {
         }
       >
         <Meta title={lead.brand} description={lead.price} />
+        <button
+            onClick={this.props.deleteLead.bind(this, lead.id)}
+            className="btn btn-danger btn-sm"
+          >
+            {" "}
+            удалить
+          </button>
       </Card>
     );
   }
