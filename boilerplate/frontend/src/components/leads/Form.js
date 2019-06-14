@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addLead } from "../../actions/leads";
-
+import { Radio } from "antd";
 export class Form extends Component {
   state = {
     city: "",
@@ -26,7 +26,9 @@ export class Form extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      engine: "Дизель"
+    };
     this.fileInput = React.createRef();
   }
 
@@ -87,7 +89,7 @@ export class Form extends Component {
     } = this.state;
     return (
       <div className="card card-body mt-4 mb-4 w-75 mx-auto">
-        <h2>Добавить записку</h2>
+        <h2>Добавить объявление</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Город</label>
@@ -136,6 +138,7 @@ export class Form extends Component {
               className="form-control"
               type="text"
               name="photo"
+              placeholder="Вставьте ссылку на фотографию вашего авто"
               onChange={this.onChange}
               value={photo}
             />
@@ -165,39 +168,88 @@ export class Form extends Component {
 
           <div className="form-group">
             <label>Двигатель</label>
-            <input
-              className="form-control"
-              type="text"
-              name="engine"
-              onChange={this.onChange}
-              value={engine}
-            />
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="engine"
+                id="engine"
+                value="Дизель"
+                onChange={this.onChange}
+                checked
+              />
+              <label className="form-check-label">Дизель</label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="engine"
+                id="engine"
+                onChange={this.onChange}
+                value="Газ"
+              />
+              <label className="form-check-label">Газ</label>
+            </div>
           </div>
 
           <div className="form-group">
-            <label>Трансмиссия</label>
-            <input
-              className="form-control"
-              type="text"
-              name="transmission"
-              onChange={this.onChange}
-              value={transmission}
-            />
+            <label className="form-check-label">Привод</label>
+
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="transmission"
+                id="transmission"
+                value="Задний"
+                onChange={this.onChange}
+                checked
+              />
+              <label className="form-check-label">Задний</label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="transmission"
+                id="transmission"
+                onChange={this.onChange}
+                value="Полный"
+              />
+              <label className="form-check-label">Полный</label>
+            </div>
           </div>
 
           <div className="form-group">
             <label>Коробка передач</label>
-            <input
-              className="form-control"
-              type="text"
-              name="gearbox"
-              onChange={this.onChange}
-              value={gearbox}
-            />
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="gearbox"
+                id="gearbox"
+                value="Механическая"
+                onChange={this.onChange}
+                checked
+              />
+              <label className="form-check-label">Механическая</label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="gearbox"
+                id="gearbox"
+                onChange={this.onChange}
+                value="Автоматическая"
+              />
+              <label className="form-check-label">Автоматическая</label>
+            </div>
           </div>
 
           <div className="form-group">
-            <label>Дата изготовления</label>
+            <label>Год выпуска</label>
             <input
               className="form-control"
               type="text"
@@ -213,13 +265,14 @@ export class Form extends Component {
               className="form-control"
               type="text"
               name="description"
+              placeholder="До 500 символов."
               onChange={this.onChange}
               value={description}
             />
           </div>
 
           <div className="form-group">
-            <label>Цена</label>
+            <label>Цена в рублях</label>
             <input
               className="form-control"
               type="text"

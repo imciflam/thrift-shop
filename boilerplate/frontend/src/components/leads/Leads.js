@@ -9,7 +9,7 @@ export class Leads extends Component {
     super(props);
     this.state = {
       data: [],
-      searchTerm: ""
+      searchTerm: "",
     };
     this.props.getLeads();
   }

@@ -26,18 +26,25 @@ export class LeadItem extends Component {
         cover={
           <img
             alt="example"
-            src="https://static.turbosquid.com/Preview/001294/194/VQ/_D.jpg"
+            src={
+              lead.photo
+                ? lead.photo
+                : "http://chinacars.in.ua/images/no-photos/no-photo-details-big.png"
+            }
           />
         }
       >
-        <Meta title={lead.brand} description={lead.price} />
+        <Meta
+          title={lead.brand + " " + lead.model}
+          description={lead.price + " ₽"}
+        />
         <button
-            onClick={this.props.deleteLead.bind(this, lead.id)}
-            className="btn btn-danger btn-sm"
-          >
-            {" "}
-            удалить
-          </button>
+          onClick={this.props.deleteLead.bind(this, lead.id)}
+          className="btn btn-danger btn-sm"
+        >
+          {" "}
+          удалить
+        </button>
       </Card>
     );
   }
