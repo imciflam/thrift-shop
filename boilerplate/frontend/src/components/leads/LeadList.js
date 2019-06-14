@@ -15,14 +15,14 @@ export class LeadList extends Component {
     }
 
     return (
-      <div>
+      <div style={{ background: "#ECECEC", padding: "30px" }}>
         <Row gutter={16}>
           {this.props.leads.map(lead => {
             if (lead.match == false) {
               return;
             }
             return (
-              <Col span={8}>
+              <Col span={6} style={{ marginBottom: "10px" }}>
                 <LeadItem key={lead.id} lead={lead} />
               </Col>
             );

@@ -25,7 +25,7 @@ export class Leads extends Component {
     this.state.searchTerm = e.target.value;
     let regexp = new RegExp(e.target.value, "i");
     let matching = this.props.leads.map(elem => {
-      elem.match = regexp.test(elem.name);
+      elem.match = regexp.test(elem.brand);
       return elem;
     });
     console.log(matching);
