@@ -1,92 +1,95 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { getTreaties, deleteTreaty } from "../../actions/treaties";
-import TreatyChild from "./TreatyChild";
+import { Table } from "antd";
 
-var FileSaver = require("file-saver");
+const columns = [
+  {
+    title: "Марка",
+    dataIndex: "brand",
+    // specify the condition of filtering result
+    // here is that finding the name started with `value`
+    onFilter: (value, record) => record.brand.indexOf(value) === 0,
+    sorter: (a, b) => a.brand.length - b.brand.length,
+    sortDirections: ["descend"]
+  },
+  {
+    title: "Модель",
+    dataIndex: "model",
+    // specify the condition of filtering result
+    // here is that finding the name started with `value`
+    onFilter: (value, record) => record.model.indexOf(value) === 0,
+    sorter: (a, b) => a.model.length - b.model.length,
+    sortDirections: ["descend"]
+  },
+  {
+    title: "Цвет",
+    dataIndex: "color"
+  },
 
-import { Pagination } from "antd";
-export class Treaties extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showPopup: false,
-      treatiesData: ""
-    };
+  {
+    title: "Пробег",
+    dataIndex: "mileage",
+    // specify the condition of filtering result
+    // here is that finding the name started with `value`
+  },
+  {
+    title: "Город",
+    dataIndex: "city",
+    filters: [
+      {
+        text: "Казань",
+        value: "Казань"
+      }
+    ],
+    filterMultiple: false,
+    onFilter: (value, record) => record.city.indexOf(value) === 0,
+    sorter: (a, b) => a.city.length - b.city.length,
+    sortDirections: ["descend", "ascend"]
+  },
+  {
+    title: "Цена",
+    dataIndex: "price",
+    defaultSortOrder: "descend",
+    sorter: (a, b) => a.price - b.price
+  },
+
+  {
+    title: "Телефон",
+    dataIndex: "phoneNumber"
   }
+];
 
-  static propTypes = {
-    treaties: PropTypes.array.isRequired,
-    getTreaties: PropTypes.func.isRequired,
-    deleteTreaty: PropTypes.func.isRequired
-  };
-  componentDidMount() {
+function onChange(pagination, filters, sorter) {
+  console.log("params", pagination, filters, sorter);
+}
+
+export class Treaties extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: ""
+    };
     this.props.getTreaties();
   }
 
-  onClick(treaty) {
-    console.log(treaty);
-    this.setState({
-      showPopup: true,
-      treatiesData: treaty
-    });
+  componentWillMount() {
+    this.props.getTreaties();
+  }
+  componentDidMount() {
+    this.setState({ data: this.props.treaties });
   }
 
   render() {
     return (
       <Fragment>
-        <h2>Мои договоры</h2>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Тип документа</th>
-              <th>Этап</th>
-              <th>Код контрагента</th>
-              <th>Сумма</th>
-              <th>Дата подписания</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.treaties.map(treaty => (
-              <tr key={treaty.id}>
-                <td onClick={this.onClick.bind(this, treaty)}>
-                  <u>{treaty.id}</u>
-                </td>
-                <td>{treaty.contractCode}</td>
-                <td>{treaty.contractStageCode}</td>
-                <td>{treaty.counteragentCode}</td>
-                <td>{treaty.sumMoney}</td>
-                <td>{treaty.dateOfSigning}</td>
-                <td>
-                  <button
-                    onClick={this.props.deleteTreaty.bind(this, treaty.id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    {" "}
-                    В архив
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <Pagination
-          defaultCurrent={1}
-          total={50}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-          showSizeChanger
-          pageSizeOptions={["15", "30", "40", "50", "100"]}
+        <h2>Объявления о покупке</h2>
+
+        <Table
+          columns={columns}
+          dataSource={this.props.treaties}
+          onChange={onChange}
         />
-        {this.state.showPopup ? (
-          <TreatyChild treatyFromParent={this.state.treatiesData} />
-        ) : null}
       </Fragment>
     );
   }

@@ -89,7 +89,7 @@ export class Form extends Component {
     } = this.state;
     return (
       <div className="card card-body mt-4 mb-4 w-75 mx-auto">
-        <h2>Добавить объявление</h2>
+        <h2>Добавить объявление о продаже</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Город</label>

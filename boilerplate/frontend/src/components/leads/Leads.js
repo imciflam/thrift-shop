@@ -9,7 +9,7 @@ export class Leads extends Component {
     super(props);
     this.state = {
       data: [],
-      searchTerm: "",
+      searchTerm: ""
     };
     this.props.getLeads();
   }
@@ -37,7 +37,7 @@ export class Leads extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Доступные объявления</h2>
+        <h2>Объявления о продаже</h2>
         <Searcher
           text={this.state.searchTerm}
           search={this.search.bind(this)}
