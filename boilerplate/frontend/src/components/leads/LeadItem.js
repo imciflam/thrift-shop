@@ -81,7 +81,7 @@ export class LeadItem extends Component {
                 }
               />
             }
-            <br/>
+            <br />
             <p>{"Марка автомобиля: " + lead.brand}</p>
             <p>{"Модель автомобиля: " + lead.model}</p>
             <p>{"Тип двигателя: " + lead.engine}</p>
@@ -91,7 +91,9 @@ export class LeadItem extends Component {
             <p>{"Пробег: " + lead.mileage}</p>
             <p>{"Описание от продавца: " + lead.description}</p>
             <p>{"Цена: " + lead.price + " ₽"}</p>
-            <p>{"Номер телефона продавца: " + lead.phoneNumber}</p>
+            <p>
+              {"Номер телефона продавца: "} <b>{lead.phoneNumber}</b>
+            </p>
             <p>{"Дата подачи объявления: " + lead.created_at.slice(0, 10)}</p>
           </Modal>
         </div>

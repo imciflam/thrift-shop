@@ -27,7 +27,7 @@ export class Header extends Component {
             {user ? `${user.username.slice(0, 1)}` : ""}
           </Avatar>
         </span>
-        <li className="nav-item ml-auto">
+        {/* <li className="nav-item ml-auto">
           <button
             onClick={this.props.logout}
             className="nav-link btn btn-info bg-primary text-light rounded mt-1 mr-1"
@@ -35,7 +35,7 @@ export class Header extends Component {
           >
             Подать объявление
           </button>
-        </li>
+        </li> */}
         <li className="nav-item ml-auto">
           <button
             onClick={this.props.logout}

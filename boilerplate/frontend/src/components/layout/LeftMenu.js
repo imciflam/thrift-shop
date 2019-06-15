@@ -27,10 +27,10 @@ class LeftMenu extends React.Component {
               <Treaties />
             </div>
           </TabPane>
-          <TabPane tab="Tab 3" key="3">
+          <TabPane tab="Подать объявление о продаже" key="3">
             <Form />
           </TabPane>
-          <TabPane tab="Tab 4" key="4">
+          <TabPane tab="Подать объявление о покупке" key="4">
             <FormForTreaties />
           </TabPane>
         </Tabs>

@@ -10,8 +10,8 @@ const columns = [
     // specify the condition of filtering result
     // here is that finding the name started with `value`
     onFilter: (value, record) => record.brand.indexOf(value) === 0,
-    sorter: (a, b) => a.brand.length - b.brand.length,
-    sortDirections: ["descend"]
+    sorter: (a, b) => ("" + a.brand).localeCompare(b.brand),
+    sortDirections: ["descend", "ascend"]
   },
   {
     title: "Модель",
@@ -19,8 +19,8 @@ const columns = [
     // specify the condition of filtering result
     // here is that finding the name started with `value`
     onFilter: (value, record) => record.model.indexOf(value) === 0,
-    sorter: (a, b) => a.model.length - b.model.length,
-    sortDirections: ["descend"]
+    sorter: (a, b) => ("" + a.model).localeCompare(b.model),
+    sortDirections: ["descend", "ascend"]
   },
   {
     title: "Цвет",
@@ -29,7 +29,7 @@ const columns = [
 
   {
     title: "Пробег",
-    dataIndex: "mileage",
+    dataIndex: "mileage"
     // specify the condition of filtering result
     // here is that finding the name started with `value`
   },
@@ -40,11 +40,16 @@ const columns = [
       {
         text: "Казань",
         value: "Казань"
+      },
+
+      {
+        text: "Москва",
+        value: "Москва"
       }
     ],
     filterMultiple: false,
     onFilter: (value, record) => record.city.indexOf(value) === 0,
-    sorter: (a, b) => a.city.length - b.city.length,
+    sorter: (a, b) => ("" + a.city).localeCompare(b.city),
     sortDirections: ["descend", "ascend"]
   },
   {
@@ -84,6 +89,13 @@ export class Treaties extends Component {
     return (
       <Fragment>
         <h2>Объявления о покупке</h2>
+        {/* <button
+          onClick={this.props.deleteTreaty.bind(this, "7")}
+          className="btn btn-danger btn-sm"
+        >
+          {" "}
+          В архив
+        </button> */}
 
         <Table
           columns={columns}
