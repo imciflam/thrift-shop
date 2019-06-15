@@ -27,7 +27,11 @@ export class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      engine: "Дизель"
+      engine: "Дизель",
+      transmission: "Задний",
+      gearbox: "Механическая",
+      
+
     };
     this.fileInput = React.createRef();
   }
