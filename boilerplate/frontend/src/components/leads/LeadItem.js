@@ -82,6 +82,7 @@ export class LeadItem extends Component {
               />
             }
             <br />
+            <p>{"Город: " + lead.city}</p>
             <p>{"Марка автомобиля: " + lead.brand}</p>
             <p>{"Модель автомобиля: " + lead.model}</p>
             <p>{"Тип двигателя: " + lead.engine}</p>

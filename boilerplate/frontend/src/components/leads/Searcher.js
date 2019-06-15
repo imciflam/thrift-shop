@@ -10,7 +10,7 @@ export class Searcher extends Component {
             onChange={this.props.search}
             type="text"
             className="form-control"
-            placeholder="Поиск по марке..."
+            placeholder="Поиск предложений по городу..."
           />
         </div>
       </div>
