@@ -1,51 +1,64 @@
 import React, { Component } from "react";
 
 import { deleteLead } from "../../actions/leads";
-var FileSaver = require("file-saver");
 import { connect } from "react-redux";
 import { Card } from "antd";
 const { Meta } = Card;
+import LeadItemForm from "./LeadItemForm";
 
 export class LeadItem extends Component {
-  onClick(j) {
-    var blob = new Blob(["1"], {
-      type: "text/plain;charset=utf-8"
+  constructor() {
+    super();
+    this.state = {
+      showPopup: false
+    };
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
     });
-    console.log(j);
-    FileSaver.saveAs(blob, j);
   }
 
   render() {
-    console.log(this.props);
     let lead = this.props.lead;
 
     return (
-      <Card
-        hoverable
-        style={{ width: 240 }}
-        cover={
-          <img
-            alt="example"
-            src={
-              lead.photo
-                ? lead.photo
-                : "http://chinacars.in.ua/images/no-photos/no-photo-details-big.png"
-            }
-          />
-        }
-      >
-        <Meta
-          title={lead.brand + " " + lead.model}
-          description={lead.price + " ₽"}
-        />
-        <button
-          onClick={this.props.deleteLead.bind(this, lead.id)}
-          className="btn btn-danger btn-sm"
+      <div onClick={this.togglePopup.bind(this, this.props.lead)}>
+        <Card
+          hoverable
+          style={{ width: 240 }}
+          cover={
+            <img
+              alt="example"
+              src={
+                lead.photo
+                  ? lead.photo
+                  : "http://chinacars.in.ua/images/no-photos/no-photo-details-big.png"
+              }
+            />
+          }
         >
-          {" "}
-          удалить
-        </button>
-      </Card>
+          <Meta
+            title={lead.brand + " " + lead.model}
+            description={lead.price + " ₽"}
+          />
+          <button
+            onClick={this.props.deleteLead.bind(this, lead.id)}
+            className="btn btn-danger btn-sm"
+          >
+            {" "}
+            удалить
+          </button>
+        </Card>
+        {this.state.showPopup ? (
+          <LeadItemForm
+            text="Close Me"
+            data={this.props.lead}
+            closePopup={this.togglePopup.bind(this)}
+          />
+        ) : null}
+      </div>
     );
   }
 }
