@@ -52,13 +52,13 @@ export class LeadItem extends Component {
           title={lead.brand + " " + lead.model}
           description={lead.price + " ₽"}
         />
-        <button
+        {/* <button
           onClick={this.props.deleteLead.bind(this, lead.id)}
           className="btn btn-danger btn-sm"
         >
           {" "}
           удалить
-        </button>
+        </button> */}
         <div>
           <br />
           <Button type="secondary btn-block" onClick={this.showModal}>
