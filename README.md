@@ -1,1 +1,2 @@
-# thrift0shop
+# thrift-shop
+
