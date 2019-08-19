@@ -1,4 +1,4 @@
-# Document management system 
+# Thrift shop 
 
 ### for dev purposes:
 1. Install python3+pip3 if needed
